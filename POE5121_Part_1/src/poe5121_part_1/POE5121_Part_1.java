@@ -6,84 +6,108 @@ import javax.swing.*; //* as a wild card
 public class POE5121_Part_1 {
 
     public static void main(String[] args) {
-        /*Registration will mostly happen here. User will be welcomed to my website/ application before
-        proceeding to input their name and sure. However, before I write the code for that I'l create my
-        Login class*/
+        Login login = new Login("", "", "", "");
         
-        //My welcome to an unnamed user to make it more user friendly to strangers
-        JOptionPane.showMessageDialog(null, "Welcome to my POE Application, Part 1.\nLet's begin your registration!");
-        //Decor type coding can also be used here but I will keep it simple
-        
-        //For registration I will begin with capturing the user's first name
-        String firstName = JOptionPane.showInputDialog(null, "Please enter your name.");
-        
-        /*Now I will check that the user's input matches my desired format
-        This will prevent names from: being blank, having numbers or special characters in them*/
-        
-        //I will also use a loop to ensure a name meeting the criteria is entered
-        do {
-            //Checking against criteria
-            if (firstName.isBlank() || firstName.matches(".*[0-9].*") ||
-                    firstName.matches(".*[ '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '_' + '-' + '+' + '=' + '{' + '}' + '[' + ']' + '|' + ':' + ';' + '<' + ',' + '>' + '.' + '?' + '/' ].*"))
-                /*Keeps showing me error code when I use anything else other than what's above*/
-            {
-                firstName = JOptionPane.showInputDialog(null, "Please enter your name.");
-            }
-            
-            else {
-                break; //Discontinues loop
-            }
-        }while (firstName.isBlank() || firstName.matches(".*[0-9].*") ||
-                    firstName.matches(".*[ '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '_' + '-' + '+' + '=' + '{' + '}' + '[' + ']' + '|' + ':' + ';' + '<' + ',' + '>' + '.' + '?' + '/' ].*"));
-        //I will now check that the loop functions correctly
-        //It is perfectly operational
-        
-        //Next is the surname
-        //User inputs their last name here
-        String lastName = JOptionPane.showInputDialog(null, "Please enter your surname.");
-        
-        //The same process for first name will be implimented for last name
-        
-        /*I will check that the user's input matches my desired format
-        This will prevent surnames from: being blank, having numbers or special characters in them*/
-        
-        //It will also use a loop to ensure a surname meeting the criteria is entered
-        do {
-            if (lastName.isBlank() || lastName.matches(".*[0-9].*") ||
-                lastName.matches(".*[ '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '_' + '-' + '+' + '=' + '{' + '}' + '[' + ']' + '|' + ':' + ';' + '<' + ',' + '>' + '.' + '?' + '/' ].*"))
-                 /*Keeps showing me error code when I use anything else other than what's above*/
-            {
-                lastName = JOptionPane.showInputDialog(null, "Please enter your surname.");
-            }
-            
-            else {
-                break; //Discontinues loop
-            }
-            
-        }while (lastName.isBlank() || lastName.matches(".*[0-9].*") ||
-                lastName.matches(".*[ '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '_' + '-' + '+' + '=' + '{' + '}' + '[' + ']' + '|' + ':' + ';' + '<' + ',' + '>' + '.' + '?' + '/' ].*"));
-        
-   
-        Login login = new Login (firstName, lastName);
-        //First is registerUser
-       while (!login.registerUser()) {
-        
-       }
+        JOptionPane.showMessageDialog(null, "Welcome to my website"); //introduction to new user
        
-        //Next is to check that it works
-        //Operational, now to add a loop
-        //It is funtioning perfectly but I decided to extend the loop over first and lastName too
-        //nevermind makes it too annoying to the user to keep re-entering their name and surname
-        
-         //Next is for the login feature of this program
+       //input user's name       
+       String firstName =  JOptionPane.showInputDialog(null, "Please enter your First Name to register");
        
-        JOptionPane.showMessageDialog(null,login.returnLoginStatus());
+       //Name is required field with a set format
+         do {
+           if (firstName.isBlank() || firstName.matches(".*[0-9].*") || 
+              firstName.matches(".*[  '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '-' + '_' + '+' + '=' + '{' + '}' + '[' + ']' + ';' + ':' + '<' + '>' + ',' + '.' + '?' + '/' + '|'].*")) {
+               
+           firstName = JOptionPane.showInputDialog(null, "Please enter your First Name to register");
+           }
+           
+           else {
+                 
+           break;}
+           
+         }while (firstName.isBlank() || firstName.matches(".*[0-9].*") ||
+                   firstName.matches(".*[  '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '-' + '_' + '+' + '=' + '{' + '}' + '[' + ']' + ';' + ':' + '<' + '>' + ',' + '.' + '?' + '/' + '|'].*"));
+              
+       //Input user's surname       
+        String lastName =  JOptionPane.showInputDialog(null, "Please enter your Last Name to register");
+        
+       //Surname is required field with a set format
+       do {
+              if (lastName.isBlank() || lastName.matches(".*[0-9].*")||
+                 lastName.matches(".*[  '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '-' + '_' + '+' + '=' + '{' + '}' + '[' + ']' + ';' + ':' + '<' + '>' + ',' + '.' + '?' + '/' + '|'].*")) {
+           
+                 lastName = JOptionPane.showInputDialog(null, "Please enter your Last Name to register");
+              }
+              
+              else {
+                  
+                  break;
+              }
+           
+         }while (lastName.isBlank() || lastName.matches(".*[0-9].*")||
+                   lastName.matches(".*[  '!' + '@' + '#' + '$' + '%' + '^' + '&' + '*' + '(' + ')' + '-' + '_' + '+' + '=' + '{' + '}' + '[' + ']' + ';' + ':' + '<' + '>' + ',' + '.' + '?' + '/' + '|'].*"));
+      
+        
+        
+                 
+       //Input new userName
+          
+          String userName = JOptionPane.showInputDialog(null, """
+                Please create a user Name to register.
+                (Your User Name must be no longer than 5 characters long and must contain an underscore)""");
+        
+        if (!login.checkUserName(userName)) {
+       
+        //the loop for username format
+            do {
+                 JOptionPane.showMessageDialog(null, 
+                "Username is not correctly formatted, please ensure that your "
+                + "username contains an underscore and is no longer than 5 characters in length");
+                 
+                  login.registerUser();
+                  
+                  userName =  JOptionPane.showInputDialog(null, """
+                Please create a user Name to register.
+                (Your User Name must be no longer than 5 characters long and must contain an underscore)""");
+               }while (!login.checkUserName(userName));
+            
+          }
+          
+            //Input new password
+            String password =  JOptionPane.showInputDialog(null,  """
+            Please create a password to register.
+            (Your password must be 8 or more characters long,
+            must contain a capital letter, a number and a special character)""");
+            
+        if (!login.checkPasswordComplexity(password)) {
+              
+           //Loop response for password format
+           do {  
+               
+                 JOptionPane.showMessageDialog(null, """
+                  Password is not correctly formatted, please ensure that the 
+                  password contains at least 8 characters, a capital letter, a number and a special character""");
+                 
+                 login.registerUser();
+                 
+                 password =  JOptionPane.showInputDialog(null,  """
+               Please create a password to register.
+               (Your password must be 8 or more characters long,
+               must contain a capital letter, a number and a special character)""");
+                 
+             }while (!login.checkPasswordComplexity(password));
+         }
+        //Correct password format response
+         else {
+             JOptionPane.showMessageDialog(null, "Password successfully captured");
+           }
+        
+        
+        login.registerUser();
      
-        
-        //I will check if it is operational before I add in a timed loop that will stop after 3 attempts
-        //It works perfectly now to include a loop to double check
-        //I'll just leave it alone
-        
+
+        JOptionPane.showMessageDialog(null, login.returnLoginStatus());
+
     }
     
 }
