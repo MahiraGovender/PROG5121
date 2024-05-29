@@ -17,10 +17,9 @@ jobs:
       - name: compile classes
         working-directory: ./src
         run: >-
-          javac -cp
-          "../testresources/junit-platform-console-standalone-1.6.0.jar"
-          "./poe5121_part_1_and_2/Login.java" "./ poe5121_part_1_and_2/POE5121_Part_1_And_2.java" 
-          "../test/ poe5121_part_1_and_2/LoginTest.java"
+          javac -cp "../testresources/junit-platform-console-standalone-1.6.0.jar" "./poe5121_part_1_and_2/Login.java" "./poe5121_part_1_and_2/POE5121_Part_1_And_2.java" "./poe5121_part_1_and_2/Tasks.java" 
+          "../test/poe5121_part_1_and_2/LoginTest.java" 
+          "../test/poe5121_part_1_and_2/TasksTest.java"
       - name: List contents of src directory after compile
         working-directory: ./src/poe5121_part_1_and_2
         run: ls
